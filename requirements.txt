@@ -1,0 +1,3 @@
+python #duh
+flask
+waitress
