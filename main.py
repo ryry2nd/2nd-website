@@ -9,8 +9,11 @@ s.connect(("8.8.8.8", 80))
 IP = s.getsockname()[0]
 s.close()
 
-data_file = open("data.json")
-data = json.load(data_file)
+try:
+    data = json.load(open("data.json"))
+except FileNotFoundError:
+    data = {"Doors": 0, "Wheals": 0}
+    json.dump(data, open("data.json", "w"))
 
 HOST = '0.0.0.0'
 PORT = 80
