@@ -4,15 +4,17 @@ from pysondb import PysonDB
 import socket, html
 
 app = Flask(__name__)
-try:
-    app.config['SERVER_NAME'] = open("serverName.txt").read()
-except FileNotFoundError:
-    pass
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 IP = s.getsockname()[0]
 s.close()
+
+try:
+    app.config['SESSION_COOKIE_DOMAIN'] = IP
+    app.config['SERVER_NAME'] = open("serverName.txt").read()
+except FileNotFoundError:
+    pass
 
 db = PysonDB("data.json")
 
