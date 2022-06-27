@@ -1,3 +1,4 @@
 python #duh
 flask
 waitress
+pysondb-v2
