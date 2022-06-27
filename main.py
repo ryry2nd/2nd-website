@@ -30,6 +30,8 @@ def data():
 def index():
     if request.method == 'POST':
         global numDoors, numWheals
+        if not request.form:
+            return redirect("/")
         if request.form['d/w'] == "Doors":
             numDoors += 1
         elif request.form['d/w'] == "Wheals":
