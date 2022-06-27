@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from waitress import serve
 from pysondb import PysonDB
 import socket, html
@@ -27,15 +27,15 @@ def isWheals(data):
 numDoors = len(db.get_by_query(query=isDoors))
 numWheals = len(db.get_by_query(query=isWheals))
 
-@app.route('/2nd/data')
+@app.route('/data')
 def data():
     return render_template("data.html", data=db.get_all())
 
-@app.route('/2nd/results')
+@app.route('/results')
 def results():
     return render_template("results.html", doors=numDoors, wheals=numWheals)
 
-@app.route('/2nd', methods=['POST', 'GET'])
+@app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
         global numDoors, numWheals
