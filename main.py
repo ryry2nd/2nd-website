@@ -27,15 +27,15 @@ def isWheals(data):
 numDoors = len(db.get_by_query(query=isDoors))
 numWheals = len(db.get_by_query(query=isWheals))
 
-@app.route('/data')
+@app.route('/2nd/data')
 def data():
     return render_template("data.html", data=db.get_all())
 
-@app.route('/results')
+@app.route('/2nd/results')
 def results():
     return render_template("results.html", doors=numDoors, wheals=numWheals)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/2nd', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
         global numDoors, numWheals
