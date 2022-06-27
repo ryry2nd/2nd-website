@@ -5,16 +5,15 @@ import socket, html
 
 app = Flask(__name__)
 
+try:
+    prefix = open("rootName.txt").read()
+except FileNotFoundError:
+    prefix = ""
+
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 IP = s.getsockname()[0]
 s.close()
-
-try:
-    app.config['SESSION_COOKIE_DOMAIN'] = open("serverName.txt").read()
-    app.config['SERVER_NAME'] = IP
-except FileNotFoundError:
-    pass
 
 db = PysonDB("data.json")
 
@@ -35,11 +34,11 @@ numWheals = len(db.get_by_query(query=isWheals))
 
 @app.route('/data')
 def data():
-    return render_template("data.html", data=db.get_all())
+    return render_template("data.html", data=db.get_all(), prefix=prefix)
 
 @app.route('/results')
 def results():
-    return render_template("results.html", doors=numDoors, wheals=numWheals)
+    return render_template("results.html", doors=numDoors, wheals=numWheals, prefix=prefix)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -62,7 +61,7 @@ def index():
         return redirect('/results')
 
     else:
-        return render_template("index.html")
+        return render_template("index.html", prefix=prefix)
 
 if __name__ == '__main__':
     print(f"connecting with ip: {IP} and port: {PORT}")
