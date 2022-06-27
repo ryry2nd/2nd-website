@@ -11,8 +11,8 @@ IP = s.getsockname()[0]
 s.close()
 
 try:
-    app.config['SESSION_COOKIE_DOMAIN'] = IP
-    app.config['SERVER_NAME'] = open("serverName.txt").read()
+    app.config['SESSION_COOKIE_DOMAIN'] = open("serverName.txt").read()
+    app.config['SERVER_NAME'] = IP
 except FileNotFoundError:
     pass
 
