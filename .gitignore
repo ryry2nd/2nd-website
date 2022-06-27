@@ -132,3 +132,4 @@ dmypy.json
 .vscode
 data.json
 start.bat
+serverName.txt
