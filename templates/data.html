@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 
 <html>
-    <title>Hi</title>
+    <title>Data</title>
     <body>
-        {% if doors>wheals %}
-            <h1>Doors are winning</h1>
-        {% elif wheals>doors %}
-            <h1>Wheals are winning</h1>
-        {% else %}
-            <h1>It is a tie</h1>
-        {% endif %}
-
-        <p>Doors: {{doors}}</p>
-        <p>Wheals: {{wheals}}</p>
-
-        <br><br>
+        <h1>Data</h1>
+        
         <a href="/">Go Back</a>
+
+        {% for id, person in data.items() %}
+            <p>{{person["name"]}}: {{person["d/w"]}}</p><br>
+        {% endfor %}
     </body>
 </html>

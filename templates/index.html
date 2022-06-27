@@ -5,14 +5,20 @@
     <body>
         <h1>Are there more Doors or Wheals in the world?</h1>
 
-        <form method="POST">
+        <form method="POST" autocomplete="off">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br><br>
+            
             <input type="radio" id="doors" name="d/w" value="Doors">
             <label for="doors">Doors</label><br>
             <input type="radio" id="wheals" name="d/w" value="Wheals">
             <label for="wheals">Wheals</label><br><br>
+            
             <input type="submit" value="Submit">
         </form>
+
         <br><br>
-        <a href="/data">Go To Data</a>
+        <a href="/results">See Results</a><br>
+        <a href="/data">See Data</a>
     </body>
 </html>
