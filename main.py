@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from waitress import serve
 from pysondb import PysonDB
 import socket, html
@@ -31,32 +31,29 @@ numWheals = len(db.get_by_query(query=isWheals))
 def data():
     return render_template("data.html", data=db.get_all())
 
-@app.route('/results')
+@app.route('/results', methods=['POST', 'GET'])
 def results():
-    return render_template("results.html", doors=numDoors, wheals=numWheals)
-
-@app.route('/', methods=['POST', 'GET'])
-def index():
     if request.method == 'POST':
         global numDoors, numWheals
         if not 'd/w' in request.form:
-            return "<meta http-equiv=\"refresh\" content=\"time; URL=.{{url_for('index')}}\" />"
+            return redirect("./")
         elif request.form['d/w'] == "Doors":
             numDoors += 1
         elif request.form['d/w'] == "Wheals":
             numWheals += 1
         else:
-            return "<meta http-equiv=\"refresh\" content=\"time; URL=..{{url_for('index')}}\" />"
+            return redirect("./")
         
         db.add({
             "name": html.escape(request.form['name']),
             "d/w": request.form['d/w']
         })
+    
+    return render_template("results.html", doors=numDoors, wheals=numWheals)
 
-        return "<meta http-equiv=\"refresh\" content=\"time; URL=.{{url_for('results')}}\" />"
-
-    else:
-        return render_template("index.html")
+@app.route('/')
+def index():
+    return render_template("index.html")
 
 if __name__ == '__main__':
     print(f"connecting with ip: {IP} and port: {PORT}")
