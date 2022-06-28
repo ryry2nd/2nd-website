@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from waitress import serve
 from pysondb import PysonDB
 import socket, html
@@ -53,7 +53,7 @@ def index():
             "d/w": request.form['d/w']
         })
 
-        return redirect("./results")
+        return redirect(url_for("results"))
 
     else:
         return render_template("index.html")
