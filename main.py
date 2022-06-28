@@ -5,6 +5,11 @@ import socket, html
 
 app = Flask(__name__)
 
+try:
+    prefix = open("rootName.txt").read()
+except FileNotFoundError:
+    prefix = ""
+
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 IP = s.getsockname()[0]
@@ -29,31 +34,31 @@ numWheals = len(db.get_by_query(query=isWheals))
 
 @app.route('/data')
 def data():
-    return render_template("data.html", data=db.get_all())
+    return render_template("data.html", data=db.get_all(), prefix=prefix)
 
 @app.route('/results', methods=['POST', 'GET'])
 def results():
     if request.method == 'POST':
         global numDoors, numWheals
         if not 'd/w' in request.form:
-            return redirect("./")
+            return redirect(prefix)
         elif request.form['d/w'] == "Doors":
             numDoors += 1
         elif request.form['d/w'] == "Wheals":
             numWheals += 1
         else:
-            return redirect("./")
+            return redirect(prefix)
         
         db.add({
             "name": html.escape(request.form['name']),
             "d/w": request.form['d/w']
         })
     
-    return render_template("results.html", doors=numDoors, wheals=numWheals)
+    return render_template("results.html", doors=numDoors, wheals=numWheals, prefix=prefix)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", prefix=prefix)
 
 if __name__ == '__main__':
     print(f"connecting with ip: {IP} and port: {PORT}")
