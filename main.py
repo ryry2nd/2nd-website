@@ -45,20 +45,20 @@ def index():
     if request.method == 'POST':
         global numDoors, numWheals
         if not 'd/w' in request.form:
-            return redirect("/")
+            return redirect("./")
         elif request.form['d/w'] == "Doors":
             numDoors += 1
         elif request.form['d/w'] == "Wheals":
             numWheals += 1
         else:
-            return redirect("/")
+            return redirect("./")
         
         db.add({
             "name": html.escape(request.form['name']),
             "d/w": request.form['d/w']
         })
 
-        return redirect('/results')
+        return redirect('./results')
 
     else:
         return render_template("index.html")
