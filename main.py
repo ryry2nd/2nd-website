@@ -40,20 +40,20 @@ def index():
     if request.method == 'POST':
         global numDoors, numWheals
         if not 'd/w' in request.form:
-            return redirect("./")
+            return "<meta http-equiv=\"refresh\" content=\"time; URL=./\" />"
         elif request.form['d/w'] == "Doors":
             numDoors += 1
         elif request.form['d/w'] == "Wheals":
             numWheals += 1
         else:
-            return redirect("./")
+            return "<meta http-equiv=\"refresh\" content=\"time; URL=./\" />"
         
         db.add({
             "name": html.escape(request.form['name']),
             "d/w": request.form['d/w']
         })
 
-        return redirect("."+url_for("results"))
+        return "<meta http-equiv=\"refresh\" content=\"time; URL=./results\" />"
 
     else:
         return render_template("index.html")
