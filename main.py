@@ -53,7 +53,7 @@ def index():
             "d/w": request.form['d/w']
         })
 
-        return redirect(url_for("results"))
+        return redirect("."+url_for("results"))
 
     else:
         return render_template("index.html")
