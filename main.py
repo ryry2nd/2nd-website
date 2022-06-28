@@ -5,10 +5,10 @@ import socket, html
 
 app = Flask(__name__)
 
-try:
+"""try:
     prefix = open("rootName.txt").read()
 except FileNotFoundError:
-    prefix = ""
+    prefix = """""
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
@@ -34,11 +34,11 @@ numWheals = len(db.get_by_query(query=isWheals))
 
 @app.route('/data')
 def data():
-    return render_template("data.html", data=db.get_all(), prefix=prefix)
+    return render_template("data.html", data=db.get_all())
 
 @app.route('/results')
 def results():
-    return render_template("results.html", doors=numDoors, wheals=numWheals, prefix=prefix)
+    return render_template("results.html", doors=numDoors, wheals=numWheals)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -61,7 +61,7 @@ def index():
         return redirect('/results')
 
     else:
-        return render_template("index.html", prefix=prefix)
+        return render_template("index.html")
 
 if __name__ == '__main__':
     print(f"connecting with ip: {IP} and port: {PORT}")
