@@ -5,11 +5,6 @@ import socket, html
 
 app = Flask(__name__)
 
-"""try:
-    prefix = open("rootName.txt").read()
-except FileNotFoundError:
-    prefix = """""
-
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 IP = s.getsockname()[0]
