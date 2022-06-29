@@ -16,7 +16,7 @@ class CubeEquation:
                     intAns = int((0.5*(n-abs(n-2))+1)*n**2 + (n-2)*(n**2-(n-2)**2))
                     equation = f"parts=(0.5(({n:,g})-|({n:,g})-2|)+1)({n:,g})^2+(({n:,g})-2)(({n:,g})^2-(({n:,g})-2)^2)"
                     ans = f"parts={intAns:,g}"
-                except (NameError, SyntaxError, ValueError):
+                except:
                     equation = ""
                     ans = ""
             else:
