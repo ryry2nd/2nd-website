@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <title>Calculate the amount of parts in a Rubik's cube</title>
+    <body>
+        <h1>Calculate the amount of parts in a Rubik's cube</h1>
+        <h2>Equation</h2>
+        <p>parts=2n^2+(n-2)(n^2-(n-2)^2)</p>
+        <h2>Calculate</h2>
+        <form method="post" autocomplete="off">
+            <label for="row">Row Number</label><br>
+            <input type="text" id="row" name="row"><br><br>
+
+            <input type="submit", value="Submit">
+        </form>
+        <br>
+        {{equation}}<br>
+        {{ans}}<br>
+        <br>
+        <form action="{{prefix}}/">
+            <input type="submit" value="Go Back">
+        </form>
+    </body>
+</html>
