@@ -15,6 +15,8 @@
         <p>Wheals: {{wheals}}</p>
 
         <br>
-        <a href="{{prefix}}{{url_for('poll')}}">Go Back</a>
+        <form action="{{prefix}}{{url_for('poll')}}">
+            <input type="submit" value="Go Back">
+        </form>
     </body>
 </html>

@@ -21,7 +21,7 @@ class Poll:
         if data['d/w'] == "Wheals":
             return True
 
-    def initPoll(self, app):
+    def initPoll(self, app: Flask):
         @app.route('/poll/data')
         def data():
             return render_template("data.html", data=db.get_all(), prefix=self.prefix)

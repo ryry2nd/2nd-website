@@ -21,6 +21,7 @@ s.close()
 
 main = MainWebsite(app, prefix)
 poll = Poll(app, prefix)
+cube = CubeEquation(app, prefix)
 
 if __name__ == '__main__':
     print(f"connecting with ip: {IP} and port: {PORT}")

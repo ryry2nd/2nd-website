@@ -18,8 +18,14 @@
         </form>
 
         <br><br>
-        <a href="{{prefix}}{{url_for('results')}}">See Results</a><br>
-        <a href="{{prefix}}{{url_for('data')}}">See Data</a><br>
-        <a href="{{prefix}}/">Go Back</a>
+        <form action="{{prefix}}{{url_for('results')}}">
+            <input type="submit", value="See Results">
+        </form>
+        <form action="{{prefix}}{{url_for('data')}}">
+            <input type="submit" value="See Data">
+        </form>
+        <form action="{{prefix}}/">
+            <input type="submit" value="Go Back">
+        </form>
     </body>
 </html>

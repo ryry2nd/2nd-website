@@ -5,7 +5,9 @@
     <body>
         <h1>Data</h1>
         
-        <a href="{{prefix}}{{url_for('poll')}}">Go Back</a>
+        <form action="{{prefix}}{{url_for('poll')}}">
+            <input type="submit" value="Go Back">
+        </form>
 
         {% for id, person in data.items() %}
             <p>{{person["name"]}}: {{person["d/w"]}}</p>
