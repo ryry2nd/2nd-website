@@ -18,4 +18,4 @@ class CubeEquation:
                 equation = ""
                 ans = ""
 
-            return render_template("cubeEquation.html", equation=equation, ans=ans)
+            return render_template("cubeEquation.html", prefix=self.prefix, equation=equation, ans=ans)
