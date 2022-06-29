@@ -1,24 +1,10 @@
 <!DOCTYPE html>
 
 <html>
-    <title>Doors or wheals</title>
+    <title>Hi</title>
     <body>
-        <h1>Are there more Doors or Wheals in the world?</h1>
+        <h1>What Do You Want To Do?</h1>
 
-        <form action="{{prefix}}{{url_for('results')}}" method="POST" autocomplete="off">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name"><br><br>
-            
-            <input type="radio" id="doors" name="d/w" value="Doors">
-            <label for="doors">Doors</label><br>
-            <input type="radio" id="wheals" name="d/w" value="Wheals">
-            <label for="wheals">Wheals</label><br><br>
-            
-            <input type="submit" value="Submit">
-        </form>
-
-        <br><br>
-        <a href="{{prefix}}{{url_for('results')}}">See Results</a><br>
-        <a href="{{prefix}}{{url_for('data')}}">See Data</a>
+        <a href="{{prefix}}/poll">Do A Poll</a>
     </body>
 </html>
