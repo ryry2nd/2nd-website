@@ -12,8 +12,9 @@ class CubeEquation:
         def cubeEquation():
             if request.method == "POST":
                 n = int(request.form["row"])
-                equation = f"parts=2({n})^2+(({n})-2)(({n})^2-(({n})-2)^2)"
-                ans = f"parts={2*(n**2)+(n-2)*(n**2-(n-2)**2)}"
+                intAns = int((0.5*(n-abs(n-2))+1)*n**2 + (n-2)*(n**2-(n-2)**2))
+                equation = f"parts=(0.5(({n})-|({n})-2|)+1)({n})^2+(({n})-2)(({n})^2-(({n})-2)^2)"
+                ans = f"parts={intAns}"
             else:
                 equation = ""
                 ans = ""
