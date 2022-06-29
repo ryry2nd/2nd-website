@@ -6,7 +6,7 @@ class CubeEquation:
         self.prefix = prefix
 
         self.initCube(app)
-    
+
     def initCube(self, app: Flask):
         @app.route("/cubeEquation", methods=["GET", "POST"])
         def cubeEquation():

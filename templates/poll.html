@@ -18,14 +18,8 @@
         </form>
 
         <br><br>
-        <form action="{{prefix}}{{url_for('results')}}">
-            <input type="submit", value="See Results">
-        </form>
-        <form action="{{prefix}}{{url_for('data')}}">
-            <input type="submit" value="See Data">
-        </form>
-        <form action="{{prefix}}/">
-            <input type="submit" value="Go Back">
-        </form>
+        <button onclick="window.location.href='{{prefix}}{{url_for('results')}}'">See Results</button><br>
+        <button onclick="window.location.href='{{prefix}}{{url_for('data')}}'">See Data</button><br>
+        <button onclick="window.location.href='{{prefix}}/'">Go Back</button>
     </body>
 </html>
