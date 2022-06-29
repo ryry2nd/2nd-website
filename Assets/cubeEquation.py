@@ -8,7 +8,7 @@ class CubeEquation:
         self.initCube(app)
     
     def initCube(self, app: Flask):
-        @app.route("/cubeEquation/", methods=["GET", "POST"])
+        @app.route("/cubeEquation", methods=["GET", "POST"])
         def cubeEquation():
             if request.method == "POST":
                 n = int(request.form["row"])
