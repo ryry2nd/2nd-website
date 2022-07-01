@@ -10,9 +10,11 @@ class CubeEquation:
     def initCube(self, app: Flask):
         @app.route("/cubeEquation", methods=["GET", "POST"])
         def cubeEquation():
+            previousEquation=""
             if request.method == "POST":
                 try:
-                    n = eval(request.form["row"])
+                    previousEquation = request.form["row"]
+                    n = eval(previousEquation)
                     intAns = int(((abs(n+2)-abs(n-2))/2)*n**2+(n-(abs(n+2)-abs(n-2))/2)*(n**2-(n-(abs(n+2)-abs(n-2))/2)**2))
                     equation = f"parts=((|({n:,g})+2|-|({n:,g})-2|)/2)({n:,g})^2+(({n:,g})-(|({n:,g})+2|-|({n:,g})-2|)/2)(({n:,g})^2-(({n:,g})-(|({n:,g})+2|-|({n:,g})-2|)/2)^2)"
                     ans = f"parts={intAns:,g}"
@@ -23,4 +25,4 @@ class CubeEquation:
                 equation = ""
                 ans = ""
 
-            return render_template("cubeEquation.html", prefix=self.prefix, equation=equation, ans=ans)
+            return render_template("cubeEquation.html", prefix=self.prefix, equation=equation, ans=ans, previous=previousEquation)
