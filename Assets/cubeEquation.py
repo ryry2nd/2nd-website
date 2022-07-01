@@ -13,12 +13,12 @@ class CubeEquation:
             if request.method == "POST":
                 try:
                     n = eval(request.form["row"])
-                    intAns = int(((abs(n+2)-abs(n-2))/2)*n**2 + (n-2)*(n**2-(n-2)**2))
-                    equation = f"parts=((|({n:,g})+2|-|({n:,g})-2|)/2)({n:,g})^2+(({n:,g})-2)(({n:,g})^2-(({n:,g})-2)^2)"
+                    intAns = int(((abs(n+2)-abs(n-2))/2)*n**2+(n-(abs(n+2)-abs(n-2))/2)*(n**2-(n-(abs(n+2)-abs(n-2))/2)**2))
+                    equation = f"parts=((|({n:,g})+2|-|({n:,g})-2|)/2)({n:,g})^2+(({n:,g})-(|({n:,g})+2|-|({n:,g})-2|)/2)(({n:,g})^2-(({n:,g})-(|({n:,g})+2|-|({n:,g})-2|)/2)^2)"
                     ans = f"parts={intAns:,g}"
-                except:
-                    equation = ""
-                    ans = ""
+                except Exception as e:
+                    equation = "Error:"
+                    ans = e
             else:
                 equation = ""
                 ans = ""
