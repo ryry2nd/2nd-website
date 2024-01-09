@@ -7,3 +7,6 @@ def index(request):
 
 def cubeEquation(request):
     return render(request, "cubeEquation.html")
+
+def login(request):
+    return render(request, "login.html")

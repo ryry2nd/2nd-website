@@ -2,9 +2,21 @@
 {% load static %}
 
 <html>
-<title>Hi</title>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        button {
+            height: .5in;
+            font-size: 24px;
+        }
+    </style>
+    <title>Hi</title>
+</head>
 
 <body>
+    <p><a onclick="window.location.href='{{prefix}}/login'" class="btn-login">login</a></p>
+
     <h1>What Do You Want To Do?</h1>
 
     <button onclick="window.location.href='https://github.com/ryry2nd'">My Github</button><br>
