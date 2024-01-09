@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<script>
+    function calculate() {
+        var n = Number.parseInt(document.getElementById("sideNumber").value);
+        document.getElementById("ans").innerHTML = (((Math.abs(n + 2) - Math.abs(n - 2)) / 2) * Math.pow(n, 2)) + ((n - ((Math.abs(n + 2) - Math.abs(n - 2)) / 2)) * (Math.pow(n, 2) - Math.pow((n - ((Math.abs(n + 2) - Math.abs(n - 2)) / 2)), 2)));
+    }
+</script>
+
+<head>
+    <title>Calculate the amount of parts in a Rubik's cube</title>
+</head>
+
+<body>
+    <h1>Calculate the amount of parts in a Rubik's cube</h1>
+    <h2>Equation</h2>
+    <p>parts=((|n+2|-|n-2|)/2)n^2+(n-(|n+2|-|n-2|)/2)(n^2-(n-(|n+2|-|n-2|)/2)^2)</p>
+    <h2>Calculate</h2>
+
+    <input type="text" id="sideNumber" value="">
+    <button onclick="calculate()">Calculate</button>
+    <p id="ans"></p>
+    <br>
+    <button onclick="window.location.href='{{prefix}}/'">Go Back</button>
+</body>
+
+</html>
