@@ -8,7 +8,7 @@ def welcome(request):
     
     user = request.user
 
-    return render(request, "welcome.html", {"username": user.username, "email": user.email})
+    return render(request, "welcome.html")
 
 def log_out(request):
     if not request.user.is_authenticated:
@@ -16,3 +16,9 @@ def log_out(request):
     
     logout(request)
     return HttpResponseRedirect("/")
+
+def fileShare(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect("/")
+    
+    return render(request, "fileShare.html")

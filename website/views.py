@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import LoginForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def index(request):
@@ -13,7 +13,10 @@ def index(request):
 def cubeEquation(request):
     return render(request, "cubeEquation.html")
 
-def login(request):
+def log_in(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect("/welcome")
+    
     if request.method == "POST":
         form = LoginForm(request.POST)
 
