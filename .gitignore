@@ -130,6 +130,4 @@ dmypy.json
 
 # my stuff
 .vscode
-data.json
-start.bat
-rootName.txt
+downloadFiles

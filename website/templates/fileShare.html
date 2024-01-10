@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Hi</title>
+</head>
+
+<body>
+    <h1>Chose a file</h1>
+    <button onclick="window.location.href='{{prefix}}/welcome'">Go Back</button><br><br>
+
+    {% for file in files %}
+    <a href="/download/{{file}}">{{file}}</a>
+    {% endfor %}
+</body>
+
+</html>
