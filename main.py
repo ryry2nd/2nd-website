@@ -6,11 +6,6 @@ HOST = '0.0.0.0'
 PORT = 80
 THREADS = 6
 
-try:
-    prefix = open("rootName.txt").read()
-except FileNotFoundError:
-    prefix = ""
-
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 IP = s.getsockname()[0]
