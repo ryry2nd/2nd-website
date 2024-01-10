@@ -22,13 +22,13 @@ def fileShare(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect("/")
     
-    return render(request, "fileShare.html", {"files": os.listdir("downloadFiles")})
+    return render(request, "fileShare.html", {"files": os.listdir(os.environ.get("DOWNLOAD_PATH"))})
 
 def download(request, path):
     if not request.user.is_authenticated:
         return HttpResponseRedirect("/")
     
-    file_path = os.path.join("downloadFiles", path)
+    file_path = os.path.join(os.environ.get("DOWNLOAD_PATH"), path)
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
