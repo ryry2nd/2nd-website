@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-size: cover;
+        background-color: black;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        text-align: center;
+    }
+
+    .button {
+        background-color: rgb(0, 0, 0);
+        padding: 20px;
+        border-radius: 8px;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100px;
+        height: 100px;
+    }
+
+    .button:hover {
+        background-color: rgb(128, 128, 128);
+    }
+
+    .button i {
+        margin-bottom: 10px;
+        font-size: 40px;
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<script>
+    const backgroundImages = [
+        {% for image in images %}
+    "/static/backgrounds/{{ image }}",
+        {% endfor %}
+    ];
+
+    function shuffleBackground() {
+        const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+        document.body.style.backgroundImage = `url('${backgroundImages[randomIndex]}')`;
+    }
+
+    function navigateTo(url) {
+        window.location.href = url;
+    }
+
+    window.onload = function () {
+        shuffleBackground();
+        setInterval(shuffleBackground, 10000);
+    };
+</script>
+
+<body>
+    <div id="fade-layer"></div>
+
+    <div class="container">
+        <div class="button" onclick="window.location.href='https://192.168.1.186:8006'">
+            <img src="{% static 'proxmox.png' %}" class="icon">
+            <span>Proxmox</span>
+        </div>
+        <div class="button" onclick="window.location.href='http://jellyfin:8096'">
+            <img src="{% static 'jellyfin.png' %}" class="icon">
+            <span>Jellyfin</span>
+        </div>
+        <div class="button" onclick="window.location.href='http://cumulonimbus:9090'">
+            <img src="{% static 'nextcloud.png' %}" class="icon">
+            <span>Nextcloud</span>
+        </div>
+        <div class="button" onclick="window.location.href='http://pihole/admin'">
+            <img src="{% static 'pihole.png' %}" class="icon">
+            <span>Pihole</span>
+        </div>
+        <div class="button" onclick="window.location.href='https://torrentmachine:8080'">
+            <img src="{% static 'qbittorrent.png' %}" class="icon">
+            <span>Torrents</span>
+        </div>
+    </div>
+</body>
+
+</html>
