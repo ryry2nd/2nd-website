@@ -1,7 +1,6 @@
 from django.shortcuts import render
 import os
  
- 
 def index(request):
     image_folder = os.path.join('coolUIOfDeath', 'static', 'backgrounds')
     images = [
@@ -10,4 +9,13 @@ def index(request):
             if file.endswith(('jpg', 'jpeg', 'png', 'ico'))
         ]
     
-    return render(request, 'index.html', {'images': images})
+    buttons = [
+        ("192.168.1.186:8006", "proxmox.png", "proxmox"),
+        ("http://jellyfin:8096", "jellyfin.png", "Jellyfin"), 
+        ("http://cumulonimbus:9090", "nextcloud.png", "Nextcloud"),
+        ("http://pihole/admin", "pihole.png", "Pihole"),
+        ("https://torrentmachine:8080", "qbittorrent.png", "Torrents"),
+        ("http://homeassistant:8123", "homeassistant.png", "Home Assistant")
+    ]
+    
+    return render(request, 'index.html', {'images': images, 'buttons': buttons})
