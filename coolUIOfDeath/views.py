@@ -15,7 +15,8 @@ def index(request):
         ("http://cumulonimbus:9090", "nextcloud.png", "Nextcloud"),
         ("http://pihole/admin", "pihole.png", "Pihole"),
         ("https://torrentmachine:8080", "qbittorrent.png", "Torrents"),
-        ("http://homeassistant:8123", "homeassistant.png", "Home Assistant")
+        ("http://homeassistant:8123", "homeassistant.png", "Home Assistant"),
+        ("/2nd", "test.png", "Website")
     ]
     
     return render(request, 'index.html', {'images': images, 'buttons': buttons})
