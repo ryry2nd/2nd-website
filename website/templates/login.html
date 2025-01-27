@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>login</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
